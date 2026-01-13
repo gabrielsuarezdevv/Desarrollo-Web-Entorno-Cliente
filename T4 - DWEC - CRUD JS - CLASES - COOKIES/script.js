@@ -1,3 +1,6 @@
+// --- CLASES Y LÓGICA DE GESTIÓN DE TAREAS ---
+
+// Clase Tarea, representa una tarea individual
 class Tarea {
     constructor(id, descripcion) {
         this._id = id;
@@ -12,6 +15,7 @@ class Tarea {
     }
 }
 
+// Clase GestorTareas, maneja la colección de tareas y la persistencia en cookies
 class GestorTareas {
     constructor() {
         this.tareas = [];
@@ -29,6 +33,7 @@ class GestorTareas {
     }
 
     eliminarTarea(id) {
+        // Filtramos la tarea a eliminar, dejando solo las que no coinciden con el ID dado, es decir, eliminando la que coincide.
         this.tareas = this.tareas.filter(t => t.id !== id);
         this.guardarEnCookies();
         this.renderizarTareas();
